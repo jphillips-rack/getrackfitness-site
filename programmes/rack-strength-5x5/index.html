@@ -105,15 +105,66 @@
       border-color: rgba(10, 132, 255, 0.28);
     }
 
+    .signup-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .signup-form-row {
+      display: grid;
+      gap: 10px;
+    }
+
+    @media (min-width: 620px) {
+      .signup-form-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+      }
+    }
+
+    .signup label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .signup input[type="email"] {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .signup input[type="email"]:focus {
+      outline: 3px solid rgba(10, 132, 255, 0.18);
+      border-color: var(--accent);
+    }
+
+    .signup-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .button {
       display: inline-flex;
-      margin-top: 10px;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border: 0;
       padding: 11px 15px;
       border-radius: 8px;
       background: var(--accent);
       color: #fff;
+      font: inherit;
       font-weight: 700;
       text-decoration: none;
+      cursor: pointer;
     }
 
     .button:focus,
@@ -173,8 +224,10 @@
       margin-bottom: 10px;
     }
   </style>
+  <link rel="stylesheet" href="../../assets/programme-guide.css">
 </head>
 <body>
+<header class="site-nav"><div class="site-nav-inner"><a class="site-nav-brand" href="../../">Rack</a><details class="site-nav-menu"><summary>Programmes</summary><nav class="site-nav-dropdown" aria-label="Programme guides"><a href="../rack-strength-5x5/">Rack Strength 5x5<span>Classic beginner barbell strength</span></a><a href="../rack-strength-5x5-build/">Rack Strength 5x5 Build<span>Strength base with accessory volume</span></a><a href="../rack-strength-5x5-split/">Rack Strength 5x5 Split<span>Four-day upper/lower structure</span></a><a href="../rack-strength-5x5-high-frequency/">Rack Strength 5x5 High Frequency<span>Five-day upper-focused strength</span></a><a href="../rack-strength-5x5-light/">Rack Strength 5x5 Light<span>Lower-volume strength training</span></a><a href="../rack-strength-5x5-compact/">Rack Strength 5x5 Compact<span>Short-session maintenance</span></a><a href="../rack-ramp-5x5/">Rack Ramp 5x5<span>Intermediate heavy/light/medium progression</span></a><a href="../rack-lean-3x10-3-day/">Rack Lean 3x10 - 3 Day<span>Strength plus conditioning</span></a><a href="../rack-lean-3x10-2-day/">Rack Lean 3x10 - 2 Day<span>Lower-commitment lean strength</span></a><a href="../rack-dumbbell-12/">Rack Dumbbell Basics<span>Dumbbell-only training</span></a><a href="../rack-bodyweight-basics/">Rack Bodyweight Basics<span>No-equipment starting point</span></a></nav></details></div></header>
   <main>
     <h1>Rack Strength 5x5</h1>
     <p class="lede">Rack Strength 5x5 is the simplest Rack barbell programme: two full-body workouts, clear target weights and a progression rule that tells you exactly what to do next.</p>
@@ -194,8 +247,23 @@
     <div class="signup">
       <h2 style="margin-top:0;padding-top:0;border-top:0;">Get the Rack Strength 5x5 starter notes</h2>
       <p>Join the early Rack guide list for programme notes, starting-weight help and updates as the web guides expand.</p>
-      <a class="button" href="mailto:support@getrackfitness.com?subject=Rack%20Strength%205x5%20guide%20list">Join the guide list</a>
-      <p style="color:var(--muted);font-size:0.9rem;">This temporary sign-up opens an email. Replace it with your mailing-list provider before running paid traffic.</p>
+      <form
+        class="signup-form"
+        action="https://buttondown.com/api/emails/embed-subscribe/rackfitness"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.com/rackfitness', 'popupwindow')"
+      >
+        <div>
+          <label for="guide-email">Email address</label>
+          <div class="signup-form-row">
+            <input id="guide-email" type="email" name="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+            <button class="button" type="submit">Send me guide updates</button>
+          </div>
+        </div>
+        <input type="hidden" name="tag" value="rack-strength-5x5">
+        <p class="signup-note">We use Buttondown to store sign-ups and send Rack guide emails. Unsubscribe any time.</p>
+      </form>
     </div>
 
     <h2>Contents</h2>
@@ -204,7 +272,11 @@
       <li><a href="#workouts">The workouts</a></li>
       <li><a href="#schedule">Weekly schedule</a></li>
       <li><a href="#starting-weights">Starting weights</a></li>
+      <li><a href="#warmups-rests-tempo">Warmups, rests and tempo</a></li>
       <li><a href="#progression">Progression</a></li>
+      <li><a href="#missed-reps">Missed reps and deloads</a></li>
+      <li><a href="#substitutions">Substitutions</a></li>
+      <li><a href="#common-mistakes">Common mistakes</a></li>
       <li><a href="#why-it-works">Why it works</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#references">References</a></li>
@@ -246,6 +318,14 @@
       <p><strong>Rule of thumb:</strong> if the first workout feels like a maximum-effort test, the start was too heavy. Rack Strength 5x5 works best when week one feels controlled and later weeks build gradually.</p>
     </div>
 
+    <h2 id="warmups-rests-tempo">Warmups, rests and tempo</h2>
+    <p>Warm up with lighter sets before the first work weight. The warmup should prepare the lift without making the work sets harder. For an empty-bar start, the empty bar may already be the work weight. For heavier sessions, use a few gradually heavier sets with fewer reps as the weight rises.</p>
+    <ul>
+      <li><strong>Rest:</strong> rest long enough to repeat strong sets. Early workouts may need one to two minutes. Heavier work may need three to five minutes.</li>
+      <li><strong>Tempo:</strong> lower the weight under control, keep the bottom position organised, and lift with intent. Do not turn every rep into a slow grind.</li>
+      <li><strong>Order:</strong> keep the exercise order stable so the log reflects comparable work from session to session.</li>
+    </ul>
+
     <h2 id="progression">Progression</h2>
     <p>Rack moves an exercise forward when you complete the planned work for that exercise. Squats can progress even if overhead press stalls. Deadlifts can progress even if rows need repeating. Each lift earns its own increase.</p>
     <ol>
@@ -254,6 +334,44 @@
       <li><strong>Repeat missed lifts.</strong> If you miss reps, repeat the same weight and try to do more next time.</li>
       <li><strong>Use smaller jumps later.</strong> Presses and rows often need smaller increases before squats and deadlifts do.</li>
     </ol>
+
+    <h2 id="missed-reps">Missed reps and deloads</h2>
+    <p>A missed rep is information, not a reason to abandon the plan. First repeat the same weight and try to complete more total reps next time. If the same lift keeps missing, reduce the load and rebuild with cleaner reps. Rack handles lifts independently so one problem lift does not freeze the rest of the programme.</p>
+    <div class="grid two">
+      <section class="card">
+        <h3>Repeat first</h3>
+        <p>If you miss a target on one lift, repeat that lift at the same weight. Keep progressing the lifts you completed.</p>
+      </section>
+      <section class="card">
+        <h3>Deload when repeats stop working</h3>
+        <p>Use a smaller load after repeated misses, then build back with better speed, range and control.</p>
+      </section>
+    </div>
+
+    <h2 id="substitutions">Substitutions</h2>
+    <p>Use the written lifts where possible. If equipment, pain or skill level makes a lift unsuitable, replace it with the closest pattern and keep the same progression intent.</p>
+    <div class="grid two">
+      <section class="card">
+        <h3>Closest replacements</h3>
+        <div class="workout-row"><span>Squat</span><span class="reps">Leg press</span></div>
+        <div class="workout-row"><span>Bench Press</span><span class="reps">Chest press</span></div>
+        <div class="workout-row"><span>Barbell Row</span><span class="reps">Cable row</span></div>
+      </section>
+      <section class="card">
+        <h3>When learning</h3>
+        <div class="workout-row"><span>Deadlift</span><span class="reps">Rack pull</span></div>
+        <div class="workout-row"><span>Overhead Press</span><span class="reps">Dumbbell press</span></div>
+        <div class="workout-row"><span>Deep squat</span><span class="reps">Box squat</span></div>
+      </section>
+    </div>
+
+    <h2 id="common-mistakes">Common mistakes</h2>
+    <ul>
+      <li><strong>Starting too heavy:</strong> this turns practice weeks into testing weeks and makes the first stall arrive early.</li>
+      <li><strong>Changing exercises too often:</strong> frequent swaps make progression hard to read.</li>
+      <li><strong>Cutting rest too short:</strong> short rests can turn a strength session into conditioning and hide whether the weight is appropriate.</li>
+      <li><strong>Grinding every set:</strong> hard work is expected later, but every rep should still look like training rather than panic.</li>
+    </ul>
 
     <h2 id="why-it-works">Why it works</h2>
     <p>Rack Strength 5x5 is built around a few training principles that show up repeatedly in resistance-training guidance and research.</p>
